@@ -1,0 +1,35 @@
+.card-head1{
+    background-color:blanchedalmond;
+}
+
+.card-head2{
+    background-color: aqua;
+}
+
+.card-head3{
+    background-color:wheat;
+}
+
+.card-head5{
+    background-color:cadetblue;
+}
+
+.card-head6{
+    background-color:teal;
+}
+
+.card-head7{
+    background-color: chocolate;
+}
+
+
+.total-head{
+    font-size: 20px;
+    font-weight: bolder;
+    font-style: italic;
+}
+
+.total-no{
+    font-weight: lighter;
+    font-size: 13px;
+}
