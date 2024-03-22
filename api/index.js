@@ -6,9 +6,9 @@ const bodyParser = require("body-parser");
 const app = express(); 
 var router = express.Router({ strict: true });
 
-//  var corsOptions = { origin: ['http://localhost:3011', 'http://localhost:3000' ] }
+ var corsOptions = { origin: ['http://localhost:3011', 'http://localhost:3000' ] }
 
- var corsOptions = { origin: ['https://uhcstock.com', 'https://admin.uhcstock.com', ] }
+//  var corsOptions = { origin: ['https://uhcstock.com', 'https://admin.uhcstock.com', ] }
 
 app.use(cors(corsOptions)); 
 // Setup server port

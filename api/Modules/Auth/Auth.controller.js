@@ -154,6 +154,13 @@ exports.delete = function (req, res) {
   });
 };
 
+exports.AllUsers = function (req, res) {
+  Auth.AllUsers(function (err, auth) {
+    if (err) res.send(err);
+    res.send(auth);
+  });
+};
+
 exports.Count = function (req, res) {
   Auth.Count(function (err, auth) {
     if (err) res.send(err);

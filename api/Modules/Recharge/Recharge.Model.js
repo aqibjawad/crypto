@@ -29,7 +29,7 @@ Recharge.create = function (recharge_amount, result) {
 };
 
 Recharge.findById = function (id, result) {
-  dbConn.query("Select * from recharge where id = ? ", id, function (err, res) {
+  dbConn.query("Select * from recharge where authId = ? ", id, function (err, res) {
     if (err) {
       console.log("error: ", err);
       result(err, null);

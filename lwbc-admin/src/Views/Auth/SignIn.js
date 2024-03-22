@@ -51,7 +51,7 @@ const Signin = () => {
           if (result.data.user.role === "user") {
             navigation("/dashboard");
           } else {
-            navigation("/signin");
+            navigation("/dashboard");
           }
         } else if (result.data.message === true) {
           toast.error("Not approved!"); // Display the error message

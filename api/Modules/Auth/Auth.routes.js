@@ -7,6 +7,8 @@ const authController = require('./Auth.controller');
 router
   .get("/count", authController.Count)
 
+  .get("/users", authController.AllUsers)
+
   .post("/login", authController.login)
 
   .get("/verify-token", (err, res) => { res.json('1') })

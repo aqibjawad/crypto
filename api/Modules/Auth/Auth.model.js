@@ -156,37 +156,6 @@ Auth.findAllStaff = function (result) {
     }
   );
 };
- 
-
-Auth.findAllUser = function (result) {
-  dbConn.query(
-    `Select * from user where role='user' OR role='admin'`,
-    function (err, res) {
-      if (err) {
-        console.log("error: ", err);
-        result(null, err);
-      } else {
-        console.log("city : ", res);
-        result(null, res);
-      }
-    }
-  );
-};
-
-Auth.findAllShop = function (result) {
-  dbConn.query(
-    `Select * from user where role='seller'`,
-    function (err, res) {
-      if (err) {
-        console.log("error: ", err);
-        result(null, err);
-      } else {
-        console.log("city : ", res);
-        result(null, res);
-      }
-    }
-  );
-};
 
 Auth.delete = function (id, result) {
   dbConn.query("DELETE from user  WHERE id = ?", [id], function (err, res) {
@@ -214,9 +183,9 @@ Auth.Count = function (result) {
   );
 };
 
-Auth.CountStaff = function (result) {
+Auth.AllUsers = function (result) {
   dbConn.query(
-    `SELECT COUNT(id) as id FROM user where role="admin"`,
+    `SELECT * FROM auth`,
     function (err, res) {
       if (err) {
         console.log("error: ", err);

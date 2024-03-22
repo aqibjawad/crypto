@@ -32,12 +32,12 @@ const Header = () => {
 
 
         <div id='userheader'>
-            <div style={{ backgroundColor: '#272727' }}>
+            <div style={{ backgroundColor: '#007DFF' }}>
 
                 <div className='d-flex justify-content-between w-100 p-3'>
                     <div>
                         <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
-                            <h3 className='mb-0 mt-3' style={{ marginLeft: '5rem' }}> Cryto Trade </h3>
+                            <h3 className='mb-0 mt-3' style={{ marginLeft: '5rem' }}> UHC Stock </h3>
                         </Link>
                     </div>
 
@@ -54,7 +54,7 @@ const Header = () => {
 
                     <div>
 
-                        <button className="btn btn-block rounded" onClick={logout} style={{ color: "#7AC1C3", backgroundColor: "#373A47!important", }} >
+                        <button className="btn btn-block rounded" onClick={logout} style={{ fontWeight:'bold', fontSize:"30px", color: "white", backgroundColor: "#373A47!important", }} >
                             Logout
                         </button>
                     </div>

@@ -1,12 +1,12 @@
-import React, { useRef, useState, useEffect, useMemo } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import { toast } from "react-toastify";
 
-import { POST, GET, DELETE, GETID, PUT } from '../../apicontroller/ApiController'
+import { POST, GET } from '../../apicontroller/ApiController'
 
 import {
     InputGroup,
-    FormControl, 
+    FormControl,
     Form,
     Card,
     Row,
@@ -18,179 +18,59 @@ import { BsFillPencilFill } from 'react-icons/bs';
 
 import { useTable, useFilters, useGlobalFilter } from "react-table";
 
-
 const About = () => {
 
-    const [image, setImage] = useState();
+    const question1Ref = useRef();
+    const answer1Ref = useRef();
 
-    const descriptionRef = useRef();
-    const facebookRef = useRef();
-    const instagramRef = useRef();
-    const linkedinRef = useRef();
+    const question2Ref = useRef();
+    const answer2Ref = useRef();
 
-    const edescriptionRef = useRef();
-    const efacebookRef = useRef();
-    const einstagramRef = useRef();
-    const elinkedinRef = useRef();
+    const question3Ref = useRef();
+    const answer3Ref = useRef();
 
+    const question4Ref = useRef();
+    const answer4Ref = useRef();
+
+    const question5Ref = useRef();
+    const answer5Ref = useRef();
+
+
+    const submit = async (event) => {
+        event.preventDefault();
+        const formData = {
+            question1: question1Ref.current.value,
+            answer1: answer1Ref.current.value,
+
+            question2: question2Ref.current.value,
+            answer2: answer2Ref.current.value,
+
+            question3: question3Ref.current.value,
+            answer3: answer3Ref.current.value,
+
+            question4: question4Ref.current.value,
+            answer4: answer4Ref.current.value,
+
+            question5: question5Ref.current.value,
+            answer5: answer5Ref.current.value,
+
+        };
+        POST("about", formData).then((res) => {
+            toast("About Added Successfully")
+        });
+    };
 
     const [about, setAbout] = useState([]);
 
-    const submit = async (event) => {
-
-        event.preventDefault();
-
-        const formData = new FormData();
-        formData.append("description", descriptionRef.current.value);
-        formData.append("facebook", facebookRef.current.value);
-        formData.append("instagram", instagramRef.current.value);
-        formData.append("linkedin", linkedinRef.current.value);
-
-        if (image) formData.append("about", image);
-
-
-        POST("about", formData).then((res) => {
-            toast("Your Sttatus Added Successfully");
-
-            descriptionRef.current.value = '';
-            facebookRef.current.value = '';
-            linkedinRef.current.value = '';
-            instagramRef.current.value = '';
-
-            fetchData();
-        });
-    };
-
-
-
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    const [aboutid, setAboutId] = useState([]);
-
-    //Edit FUNCTION
-    const edit = async (event, id) => {
-        GETID("about", id, "").then((result) => {
-            setAboutId(result[0]);
-        });
-        handleShow();
-    };
-
-    // Send edited data to the databse finction
-    const eSubmit = (event, id) => {
-        event.preventDefault();
-
-        const formData = new FormData();
-        formData.append("description", edescriptionRef.current.value);
-        formData.append("facebook", efacebookRef.current.value);
-        formData.append("linkedin", elinkedinRef.current.value);
-        formData.append("instagram", einstagramRef.current.value);
-
-        if (image) formData.append("about", image);
-
-        PUT("about", id, formData).then((res) => {
-
-            edescriptionRef.current.value = '';
-            efacebookRef.current.value = '';
-            elinkedinRef.current.value = '';
-            einstagramRef.current.value = '';
-
-            fetchData();
-
-            toast("About Updated Successfully");
-        });
-    };
-
     const fetchData = async () => {
         GET("about").then((result) => {
-            setAbout(result);
+            setAbout(result[0]);
         });
     };
 
     useEffect(() => {
         fetchData();
-    }, []) 
-
-    const [delShow, setDelShow] = useState(false);
-    const handleCloseDel = () => setDelShow(false);
-    const handleShowDel = () => setDelShow(true);
-
-    const delView = async (event, id) => {
-        GETID("company", id, '').then((result) => {
-            setAboutId(result[0]);
-        });
-        handleShowDel();
-    };
-
-
-    const remove = async (event, id) => {
-        DELETE("about/delete", id, "");
-        fetchData();
-    };
-
-    const columns = useMemo(
-        () => [
-
-            {
-                Header: "Description",
-                accessor: "description", // Replace with the actual key for your data
-            },
-
-            {
-                Header: "Facebook",
-                accessor: "facebook", // Replace with the actual key for your data
-            },
-
-            {
-                Header: "Linkedin",
-                accessor: "linkedin", // Replace with the actual key for your data
-            },
-
-            {
-                Header: "Instagram",
-                accessor: "instagram", // Replace with the actual key for your data
-            },
-
-            {
-                Header: 'Actions', accessor: 'id',
-                Cell: ({ row }) => (
-                    <div>
-                        <AiFillDelete onClick={(e) => delView(e, row.original.id)} />
-                        <BsFillPencilFill style={{ color: 'blue', marginLeft: '1rem' }} onClick={(e) => edit(e, row.original.id)} />
-                    </div>
-                )
-            }
-
-            // Add more columns as needed
-        ],
-        []
-    );
-
-    // Use TanStack's useTable hook with useFilters
-    const {
-        getTableProps,
-        getTableBodyProps,
-        headerGroups,
-        rows,
-        prepareRow,
-        state,
-        setGlobalFilter,
-    } = useTable(
-        {
-            columns,
-            data: about,
-            initialState: {
-                // Add initial filter states if needed
-                filters: [],
-                globalFilter: "",
-            },
-        },
-        useFilters, // Add the useFilters hook to enable filtering
-        useGlobalFilter // Add the useGlobalFilter hook to enable global filtering
-    );
-
-    const { globalFilter } = state;
+    }, [])
 
     return (
         <div>
@@ -210,42 +90,79 @@ const About = () => {
                                 <div className="row">
 
                                     <Col md={12}>
-                                        <Form.Label htmlFor="basic-url"> Description </Form.Label>
+                                        <Form.Label htmlFor="basic-url"> Question No 1: </Form.Label>
                                         <InputGroup className="mb-3">
-                                            <FormControl as="textarea" rows="4" type="text" ref={descriptionRef} />
+                                            <FormControl ref={question1Ref} as="textarea" rows="2" type="text" />
+                                        </InputGroup>
+                                    </Col>
+
+
+                                    <Col md={12}>
+                                        <Form.Label htmlFor="basic-url"> Answer No 1: </Form.Label>
+                                        <InputGroup className="mb-3">
+                                            <FormControl ref={answer1Ref} as="textarea" rows="2" type="text" />
                                         </InputGroup>
                                     </Col>
 
                                     <Col md={12}>
-                                        <Form.Label htmlFor="basic-url"> Facebook </Form.Label>
+                                        <Form.Label htmlFor="basic-url"> Question No 2: </Form.Label>
                                         <InputGroup className="mb-3">
-                                            <FormControl type="text" ref={facebookRef} />
+                                            <FormControl ref={question2Ref} as="textarea" rows="2" type="text" />
                                         </InputGroup>
                                     </Col>
 
                                     <Col md={12}>
-                                        <Form.Label htmlFor="basic-url"> LinkedIn </Form.Label>
+                                        <Form.Label htmlFor="basic-url"> Answer No 2: </Form.Label>
                                         <InputGroup className="mb-3">
-                                            <FormControl type="text" ref={linkedinRef} />
+                                            <FormControl ref={answer2Ref} as="textarea" rows="2" type="text" />
                                         </InputGroup>
                                     </Col>
 
                                     <Col md={12}>
-                                        <Form.Label htmlFor="basic-url"> Instagram </Form.Label>
+                                        <Form.Label htmlFor="basic-url"> Question No 3: </Form.Label>
                                         <InputGroup className="mb-3">
-                                            <FormControl type="text" ref={instagramRef} />
+                                            <FormControl ref={question3Ref} as="textarea" rows="2" type="text" />
                                         </InputGroup>
                                     </Col>
 
                                     <Col md={12}>
-                                        <Form.Label htmlFor="basic-url"> Image </Form.Label>
+                                        <Form.Label htmlFor="basic-url"> Answer No 3: </Form.Label>
                                         <InputGroup className="mb-3">
-                                            <FormControl type="file" onChange={(e) => setImage(e.target.files[0])} />
+                                            <FormControl ref={answer3Ref} as="textarea" rows="2" type="text" />
                                         </InputGroup>
                                     </Col>
 
                                     <Col md={12}>
-                                        <Form.Group controlId="submit">
+                                        <Form.Label htmlFor="basic-url"> Question No 4: </Form.Label>
+                                        <InputGroup className="mb-3">
+                                            <FormControl ref={question4Ref} as="textarea" rows="2" type="text" />
+                                        </InputGroup>
+                                    </Col>
+
+                                    <Col md={12}>
+                                        <Form.Label htmlFor="basic-url"> Answer No 4: </Form.Label>
+                                        <InputGroup className="mb-3">
+                                            <FormControl ref={answer4Ref} as="textarea" rows="2" type="text" />
+                                        </InputGroup>
+                                    </Col>
+
+                                    <Col md={12}>
+                                        <Form.Label htmlFor="basic-url"> Question No 5: </Form.Label>
+                                        <InputGroup className="mb-3">
+                                            <FormControl ref={question5Ref} as="textarea" rows="2" type="text" />
+                                        </InputGroup>
+                                    </Col>
+
+                                    <Col md={12}>
+                                        <Form.Label htmlFor="basic-url"> Answer No 5: </Form.Label>
+                                        <InputGroup className="mb-3">
+                                            <FormControl ref={answer5Ref} as="textarea" rows="2" type="text" />
+                                        </InputGroup>
+                                    </Col>
+
+
+                                    <Col md={12}>
+                                        <Form.Group>
                                             <Button onClick={submit} variant="primary" type="submit" size="lg" block>
                                                 Submit
                                             </Button>
@@ -258,117 +175,73 @@ const About = () => {
                     </Card>
                 </Col>
 
-                <Col sm={8} className="mt-3">
-                    <div className="card">
-                        <div className="card-body">
-                            <div style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
-                                <input
-                                    type="text"
-                                    value={globalFilter || ""}
-                                    onChange={(e) => setGlobalFilter(e.target.value)}
-                                    placeholder="Search..."
-                                />
+                <Col sm={8}>
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                <th>Q 1</th>
+                                <th> Ans 1 </th>
+                              
+                                <th>Q 2</th>
+                                <th> Ans 2 </th>
 
-                            </div>
+                                <th>Q 3</th>
+                                <th> Ans 3 </th>
 
-                            <Table striped bordered hover responsive {...getTableProps()}>
-                                <thead>
-                                    {headerGroups.map((headerGroup) => (
-                                        <tr {...headerGroup.getHeaderGroupProps()}>
-                                            {headerGroup.headers.map((column) => (
-                                                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-                                            ))}
-                                        </tr>
-                                    ))}
-                                </thead>
-                                <tbody>
-                                    {rows.map((row) => {
-                                        prepareRow(row);
-                                        return (
-                                            <tr {...row.getRowProps()}>
-                                                {row.cells.map((cell) => (
-                                                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                                                ))}
-                                            </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </Table>
-                        </div>
-                    </div>
+                                <th>Q 4</th>
+                                <th> Ans 4 </th>
+
+                                <th>Q 5</th>
+                                <th> Ans 5 </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    {about.question1} 
+                                </td>
+
+                                <td>
+                                    {about.answer1} 
+                                </td>
+
+                                <td>
+                                    {about.question2} 
+                                </td>
+
+                                <td>
+                                    {about.answer2} 
+                                </td>
+
+                                <td>
+                                    {about.question3} 
+                                </td>
+
+                                <td>
+                                    {about.answer3} 
+                                </td>
+
+                                <td>
+                                    {about.question4} 
+                                </td>
+
+                                <td>
+                                    {about.answer4} 
+                                </td>
+
+                                <td>
+                                    {about.question5} 
+                                </td>
+
+                                <td>
+                                    {about.answer5} 
+                                </td>
+                            </tr>
+                        </tbody>
+                    </Table>
                 </Col>
+
             </Row>
-
-            {aboutid &&
-
-                <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title> Edit Details </Modal.Title>
-                    </Modal.Header>
-                    <img src={`${process.env.REACT_APP_AWS_URL}${aboutid.image}`} alt="Category" height="20%" width="20%" style={{ margin: '0.5rem' }} />
-                    <Modal.Body>
-                        <Row className="">
-                            <Col md={6}>
-                                <Form.Label htmlFor="basic-url"> Description </Form.Label>
-                                <FormControl ref={edescriptionRef} className="form-control" defaultValue={aboutid.description} placeholder={aboutid.description} />
-                            </Col>
-
-                            <Col md={6}>
-                                <Form.Label htmlFor="basic-url"> Image </Form.Label>
-                                <InputGroup className="mb-3">
-                                    <FormControl type="file" onChange={(e) => setImage(e.target.files[0])} />
-                                </InputGroup>
-                            </Col>
-
-                            <Col md={6}>
-                                <Form.Label htmlFor="basic-url"> Facebook </Form.Label>
-                                <InputGroup className="mb-3">
-                                    <FormControl type="text" ref={efacebookRef} defaultValue={aboutid.facebook} placeholder={aboutid.facebook} />
-                                </InputGroup>
-                            </Col>
-
-                            <Col md={6}>
-                                <Form.Label htmlFor="basic-url"> LinkedIn </Form.Label>
-                                <InputGroup className="mb-3">
-                                    <FormControl type="text" ref={elinkedinRef} defaultValue={aboutid.linkedin} placeholder={aboutid.linkedin} />
-                                </InputGroup>
-                            </Col>
-
-                            <Col md={6}>
-                                <Form.Label htmlFor="basic-url"> Instagram </Form.Label>
-                                <InputGroup className="mb-3">
-                                    <FormControl type="text" ref={einstagramRef} defaultValue={aboutid.instagram} placeholder={aboutid.instagram} />
-                                </InputGroup>
-                            </Col>
-
-                        </Row>
-                    </Modal.Body>
-                    <div className="my-2 pl-3 mb-5">
-                        <Button className="btn-custom border-0 mx-3" variant="danger" onClick={(e) => eSubmit(e, aboutid.id)} >
-                            Submit
-                        </Button>
-                    </div>
-                </Modal>
-            }
-
-            <Modal show={delShow} onHide={handleCloseDel}>
-                <Modal.Header closeButton>
-                    <Modal.Title> Delete Details </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <div>
-                        <span>
-                            Are you Sure you want to delete !
-                        </span>
-
-                        <div className="my-2 pl-3 mb-5">
-                            <Button className="btn-custom border-0 mx-3" variant="danger" onClick={(e) => remove(e, aboutid.id)} >
-                                Delete
-                            </Button>
-                        </div>
-                    </div>
-                </Modal.Body>
-            </Modal>
         </div>
     )
 }

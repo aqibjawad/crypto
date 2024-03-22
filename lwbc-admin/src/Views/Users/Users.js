@@ -18,7 +18,7 @@ const Users = () => {
     const [users, setUsers] = useState([]);
 
     const fetchData = async () => {
-        GET("auth").then((result) => {
+        GET("auth/users").then((result) => {
             setUsers(result);
         });
     };

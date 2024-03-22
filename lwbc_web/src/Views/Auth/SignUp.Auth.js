@@ -115,7 +115,7 @@ const Signup = () => {
     };
     POST("auth", formData).then((res) => {
         toast("Your Login Added Successfully")
-        history("/signin")
+        history("/")
     });
 };
 

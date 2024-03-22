@@ -17,7 +17,6 @@ const Recharge = () => {
     const [depositAmount, setDepositAmount] = useState('');
 
     useEffect(() => {
-        // Update the totalRef value whenever depositAmount changes
         totalRef.current.value = Number(depositAmount) + 1;
     }, [depositAmount]);
 
@@ -31,7 +30,7 @@ const Recharge = () => {
         const formData = {
             deposit: depositRef.current.value,
             total: totalRef.current.value,
-            user_id: localStorage.getItem("authId"),
+            authId: user.authId,
         };
         POST("recharge", formData, header).then((res) => {
             toast("Your Recharge Added");

@@ -49,9 +49,9 @@ const Signin = () => {
           auth.activateToken(localStorage.setItem("token", result.data.token));
           auth.activateAuthentication(true);
           if (result.data.user.role === "user") {
-            navigation("/");
+            navigation("/home");
           } else {
-            navigation("/signup");
+            navigation("/home");
           }
         } else if (result.data.message === true) {
           toast.error("Not approved!"); // Display the error message

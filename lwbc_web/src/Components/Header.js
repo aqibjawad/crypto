@@ -6,14 +6,14 @@ import "./index.css"
 
 const Header = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#272727', height: '130px' }}>
+        <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#808080', height: '130px' }}>
             <div className="container">
                 <div className="d-flex justify-content-between w-100">
                     <div>
-                        <img src="Family Loan Insurance Logo.png" style={{ height: '100px', width: '100px' }} />
+                        <img src="Untitled design.png" style={{ height: '170px', width: '170px' }} />
                     </div>
 
-                    <button
+                    <button 
                         className="navbar-toggler"
                         type="button"
                         data-toggle="collapse"
@@ -55,8 +55,14 @@ const Header = () => {
                         </li>
 
                         <li className="nav-item mt-2" style={{ marginLeft: '80px' }}>
-                            <Link to="/depsoit" style={{ textDecoration: 'none', color: 'white' }}>
+                            <Link to="/recharge" style={{ textDecoration: 'none', color: 'white' }}>
                                 Deposit
+                            </Link>
+                        </li>
+
+                        <li className="nav-item mt-2" style={{ marginLeft: '80px' }}>
+                            <Link to="/addwallet" style={{ textDecoration: 'none', color: 'white' }}>
+                                Add Wallet 
                             </Link>
                         </li>
                         
