@@ -8,6 +8,8 @@ const aboutRoutes = require ("../Modules/About/About.Route");
 
 const announcementRoutes = require ("../Modules/Announcement/Announcement.Route");
 
+const witdarwalRoutes = require ("../Modules/Witdarwal/Witdarwal.Route");
+
 module.exports = function router(app) {
     app
       // Auth routes
@@ -20,5 +22,7 @@ module.exports = function router(app) {
       .use("/api/v1/about", aboutRoutes)
 
       .use("/api/v1/announcements", announcementRoutes)
+
+      .use("/api/v1/witdawarl", witdarwalRoutes)
   
   };

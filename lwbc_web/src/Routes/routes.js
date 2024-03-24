@@ -8,6 +8,7 @@ import Recharge from "../Views/Recharge/Recharge"
 import Network from "../Views/Network/Network"
 
 import AddWallet from "../Views/Witdarwal/AddWallet"
+import Witdarwal from "../Views/Witdarwal/Witdarwal"
 
 import Aboutus from "../Views/Aboutus"
 
@@ -27,6 +28,7 @@ const routes =[
     {path:'/network', element:<Network />, exact:'true', type:'private' },
 
     {path:'/addwallet', element:<AddWallet />, exact:'true', type:'private' },
+    {path:'/witdarwal', element:<Witdarwal />, exact:'true', type:'private' },
 
     {path:'/aboutus', element:<Aboutus />, exact:'true', type:'private' },
 
