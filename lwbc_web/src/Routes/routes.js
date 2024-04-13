@@ -16,25 +16,33 @@ import Help from "../Views/Help"
 
 import Account from "../Views/Profile"
 
+import Invite from "../Views/Invite/Invite"
+
+import Team from "../Views/Team/team"
+
 const routes =[
     
     {path:'/signup', element:<SignUp />, exact:'true', type:'public' },
     {path:'/', element:<Signin />, exact:'true', type:'public' },
 
-    {path:'/Home', element:<Home />, exact:'true', type:'private' },
+    {path:'/Home', element:<Home />, exact:'true', type:'public' },
 
-    {path:'/recharge', element:<Recharge />, exact:'true', type:'private' },
+    {path:'/recharge', element:<Recharge />, exact:'true', type:'public' },
 
-    {path:'/network', element:<Network />, exact:'true', type:'private' },
+    {path:'/network', element:<Network />, exact:'true', type:'public' },
 
-    {path:'/addwallet', element:<AddWallet />, exact:'true', type:'private' },
-    {path:'/witdarwal', element:<Witdarwal />, exact:'true', type:'private' },
+    {path:'/addwallet', element:<AddWallet />, exact:'true', type:'public' },
+    {path:'/witdarwal', element:<Witdarwal />, exact:'true', type:'public' },
 
-    {path:'/aboutus', element:<Aboutus />, exact:'true', type:'private' },
+    {path:'/aboutus', element:<Aboutus />, exact:'true', type:'public' },
 
-    {path:'/help', element:<Help />, exact:'true', type:'private' },
+    {path:'/help', element:<Help />, exact:'true', type:'public' },
 
-    {path:'/profile', element:<Account />, exact:'true', type:'private' },
+    {path:'/profile', element:<Account />, exact:'true', type:'public' },
+
+    {path:'/invite', element:<Invite />, exact:'true', type:'public' },
+
+    {path:'/team', element:<Team />, exact:'true', type:'public' },
 
 
 ]

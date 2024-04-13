@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import Table from 'react-bootstrap/Table';
+import { Table, Container } from 'react-bootstrap';
 
 import "./index.css"
 
@@ -25,69 +25,65 @@ const Account = () => {
     useEffect(() => {
         fetchData()
     }, [])
-    
+
 
     return (
-        <>
-            <div className='Dahboard mt-5'>
-                <div className='card'>
-                    <form className="card-body">
+        <Container>
+            <div className='Dahboard mt-5' id="witdarwal">
 
-                        <div className="row">
-                            <div className="d-flex form-group col-sm-6" style={{ fontSize: '20px', marginLeft: "15rem" }}>
-                                <strong for="exampleInputEmail1">
-                                    Hello {user.name}
-                                    <span className="text-danger">*</span>
-                                </strong>
+                <div className="row">
+                    <div className="d-flex form-group col-sm-6" style={{ fontSize: '20px', marginLeft: "15rem" }}>
+                        <strong for="exampleInputEmail1">
+                            Hello {user.name}
+                            <span className="text-danger">*</span>
+                        </strong>
 
-                                <div style={{ marginLeft: '20rem' }}>
-                                    <strong>
-                                        {user.email}
-                                    </strong>
-                                </div>
-                            </div>
+                        <div style={{ marginLeft: '20rem' }}>
+                            <strong>
+                                {user.email}
+                            </strong>
                         </div>
+                    </div>
+                </div>
 
-                        <div>
-                            <h1 className='text-center mt-5'>
-                                Your Deposits:
-                            </h1>
+                <div>
+                    <h1 className='text-center mt-5'>
+                        Your Deposits:
+                    </h1>
 
-                            <Table striped bordered hover>
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th> Date </th>
-                                        <th> Deposit Amount </th>
-                                        <th> Total Amount </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {recharge && recharge.map((recharges) => (
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th> Date </th>
+                                <th> Deposit Amount </th>
+                                <th> Total Amount </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {recharge && recharge.map((recharges) => (
 
-                                        
-                                        <tr>
-                                            <td> {recharges.id} </td>
-                                            <td> {recharges.created_at.split(' ')[0]} </td>
-                                            <td> {recharges.deposit} </td>
-                                            <td> {recharges.total} </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </Table>
-                        </div>
 
-                        <div>
-                            <h1 className='text-center mt-5'>
-                                Your Witdarwals:
-                            </h1>
+                                <tr>
+                                    <td> {recharges.id} </td>
+                                    <td> {recharges.created_at.split(' ')[0]} </td>
+                                    <td> {recharges.deposit} </td>
+                                    <td> {recharges.total} </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </div>
 
-                            <ProfileWitdarwal />
-                        </div>
-                    </form>
+                <div>
+                    <h1 className='text-center mt-5'>
+                        Your Witdarwals:
+                    </h1>
+
+                    <ProfileWitdarwal />
                 </div>
             </div>
-        </>
+        </Container>
 
 
     )

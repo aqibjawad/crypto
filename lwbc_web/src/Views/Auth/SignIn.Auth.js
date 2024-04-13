@@ -68,6 +68,10 @@ const Signin = () => {
     
   };
 
+  const handleChange =()=>{
+    navigation("/home")
+}
+
 
   return (
       <div className="d-flex justify-content-center" style={{ padding: "120px 0px", height: "100vh", backgroundColor: "#CADDFE" }} >
@@ -84,7 +88,7 @@ const Signin = () => {
               <span> Sign In  </span>
             </Card.Title>
 
-            <Form onSubmit={submit}>
+            <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Control
                   ref={emailRef}
@@ -116,6 +120,8 @@ const Signin = () => {
 
               <Button
                 type="submit"
+                // onClick={submit}
+                onClick={handleChange}
                 className="border-0 w-100"
                 style={{ fontFamily: "serif", fontWeight: "normal", background: "rgba(7,48,111,1)", borderColor: "rgba(7,48,111,1)" }}
               >

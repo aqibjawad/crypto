@@ -15,6 +15,17 @@ const AddWallet = () => {
 
     const navigate = useNavigate();
 
+    // State variable to track whether data has been submitted
+    const [dataSubmitted, setDataSubmitted] = useState(false);
+
+    useEffect(() => {
+        // Check if data has been submitted for this user ID
+        const userData = localStorage.getItem(`submittedData_${user.authId}`);
+        if (userData) {
+            setDataSubmitted(true);
+        }
+    }, [user.authId]);
+
     const submit = async (event) => { 
         event.preventDefault();
         const formData = {
@@ -23,10 +34,21 @@ const AddWallet = () => {
             authId: user.authId,
         };
         POST("addwallet", formData).then((result) => {
-            toast("Your Witdarwal Added");
-            navigate("/home")
+            toast("Your Wallet Added");
+
+
+            setDataSubmitted(true);
+
+            // Save the submission status in local storage
+            localStorage.setItem(`submittedData_${user.authId}`, true);
+
+            // navigate("/home")
         });
     };
+
+    const handleChange =()=>{
+        navigate("/home")
+    }
  
     return (
         <Container>
@@ -51,9 +73,13 @@ const AddWallet = () => {
                     </Form.Group>
                 </Col>
 
-                <Button onClick={submit} variant="primary" type="submit">
-                    Submit
-                </Button>
+                {!dataSubmitted && (
+                    <Button
+                        onClick={submit}
+                        variant="primary" type="submit">
+                        Submit
+                    </Button>
+                )}
             </Row>
         </Container>
     );

@@ -11,9 +11,9 @@ const Network = () => {
     return (
         <Container>
 
-            <h1 className="text-center"> {user.name} </h1>
+            {/* <h1 className="text-center"> {user.name} </h1>
 
-            <h3 className="mt-5 text-center"> {user.email} </h3>
+            <h3 className="mt-5 text-center"> {user.email} </h3> */}
             <Row>
                 <Col sm={6} className="mt-5">
                     Your Adress of your Wallet

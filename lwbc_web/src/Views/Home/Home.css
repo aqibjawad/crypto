@@ -1,16 +1,14 @@
+
 .home-card {
     border: 1px solid rgba(0, 0, 0, 0.125);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
     border-top: none; /* Remove top border */
     margin-top: 20px; /* Adjust margin */
-    border-radius: 5px; /* Add border radius */
+    border-radius: 5px; 
+    background-color: #7209B7;
 }
 
-.home-card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add hover effect */
-    background-color: gray;
-    border: 1px solid black;
-}
+
 
 .circle {
     width: 200px;
@@ -51,3 +49,38 @@
     width: 1000px; /* Adjust the width as needed */
     /* Add any other styles as needed */
 }
+
+
+/* ----------------- Home Coins ----------------------------- */
+
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .custom-tabs {
+    display: flex;
+    justify-content: space-between;
+    width: 80%; /* Adjust as needed */
+  }
+  
+  .tab-content {
+    font-size: 18px; /* Adjust content font size as needed */
+    margin-top: 20px; /* Add space between tabs and content */
+  }
+  
+  .nav-link {
+    font-size: 50px; /* Adjust tab font size as needed */
+    color: black; /* Set tab color to black */
+  }
+
+  .bg-image{
+    background-color: #3A4154;
+    width: 1100px;
+    height: 80px;
+    border-radius: 5%;
+  }
+
+  

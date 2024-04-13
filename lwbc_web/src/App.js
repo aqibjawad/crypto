@@ -32,7 +32,7 @@ function App() {
           </Route>
 
           <Route element={<WebsiteLayout><Outlet /></WebsiteLayout>}>
-            {isAuthenticated && routes.map((featu) => featu.type == 'private' && (
+            {isAuthenticated && routes.map((featu) => featu.type == 'public' && (
               <Route element={featu.element} path={featu.path} exact={featu} />
             ))}
           </Route> 

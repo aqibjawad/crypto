@@ -8,12 +8,12 @@ const ProfileWitdarwal = () => {
 
     const user = JSON.parse(localStorage.getItem("user"))
 
-    const [witdarwal, setWitdarwal] = useState([]);
+    const [witdarwal, setWitdarwal] = useState({});
 
 
     const fetchData = async () => {
         GET(`addwallet/${user.authId}`).then((result) => {
-            setWitdarwal(result)
+            setWitdarwal(result[0])
         })
     };
 
@@ -22,7 +22,7 @@ const ProfileWitdarwal = () => {
     }, [])
 
     return (
-        <div>
+        <div id="witdarwal_cards">
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -33,13 +33,11 @@ const ProfileWitdarwal = () => {
                 </thead>
 
                 <tbody>
-                    {witdarwal && witdarwal.map((witdarwals) => (
-                        <tr>
-                            <td> {witdarwals.id} </td>
-                            <td> {witdarwals.agreement} </td>
-                            <td> {witdarwals.wallet_address} </td>
-                        </tr>
-                    ))}
+                    <tr>
+                        <td> {witdarwal.id} </td>
+                        <td> {witdarwal.agreement} </td>
+                        <td> {witdarwal.wallet_address} </td>
+                    </tr>
                 </tbody>
             </Table>
         </div>

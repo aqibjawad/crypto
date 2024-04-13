@@ -26,6 +26,11 @@ const Witdarwal = () => {
         });
     };
 
+    const handleChange =()=>{
+        toast("Your Witdarwal Your Amount");
+        navigate("/home")
+    }
+
     return (
         <Container>
             <Row>
@@ -46,7 +51,10 @@ const Witdarwal = () => {
                     </Form.Group>
                 </Col>
 
-                <Button onClick={submit} variant="primary" type="submit">
+                <Button 
+                // onClick={submit} 
+                onClick={handleChange}
+                variant="primary" type="submit">
                     Submit
                 </Button>
             </Row>

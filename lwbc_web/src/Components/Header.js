@@ -4,9 +4,30 @@ import { Link } from "react-router-dom"
 
 import "./index.css"
 
+import {Auth} from "../context/Auth.Context"
+
+import { useNavigate } from 'react-router-dom';
+
 const Header = () => {
+
+    const auth = Auth();
+
+    const navigate = useNavigate();
+
+
+    const logout = () => {
+        auth.activateAuthentication(false);
+        auth.activateToken("");
+        localStorage.removeItem("token");
+        localStorage.removeItem("refreshCycle");
+        localStorage.removeItem("user");
+        navigate("/");
+    };
+
+
+
     return (
-        <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#808080', height: '130px' }}>
+        <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#7209B7', height: '130px' }}>
             <div className="container">
                 <div className="d-flex justify-content-between w-100">
                     <div>
@@ -70,6 +91,12 @@ const Header = () => {
                             <Link to="/witdarwal" style={{ textDecoration: 'none', color: 'white' }}>
                                 Witdarwal
                             </Link>
+                        </li>
+
+                        <li className="nav-item mt-2" style={{ marginLeft: '80px' }}>
+                            <button style={{border:"none", backgroundColor:'transparent', color:"white"}} onClick={logout}>
+                                Logout
+                            </button>
                         </li>
 
                     </ul>

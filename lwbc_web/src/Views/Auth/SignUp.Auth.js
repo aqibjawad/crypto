@@ -119,6 +119,10 @@ const Signup = () => {
     });
 };
 
+  const handleChange =()=>{
+    toast("Your Login Added Successfully")
+    history("/")
+}
 
   return (
     <Container className="d-flex justify-content-center" style={{ padding: "50px 0px" }} >
@@ -208,7 +212,8 @@ const Signup = () => {
 
         <div className="d-flex justify-content-center">
           <Button
-            onClick={submit}
+            // onClick={submit}
+            onClick={handleChange}
             // disabled={!Object.values(validations).every(Boolean)}
             className="border-0 mt-5"
             type="submit"

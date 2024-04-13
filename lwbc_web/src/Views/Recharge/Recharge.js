@@ -37,6 +37,11 @@ const Recharge = () => {
             navigate("/network")
         });
     };
+
+    const handleChange =()=>{
+        toast("Your Recharge Added");
+        navigate("/network")
+    }
  
     return (
         <Container>
@@ -72,7 +77,10 @@ const Recharge = () => {
                     </Form.Group>
                 </Col>
 
-                <Button onClick={submit} variant="primary" type="submit">
+                <Button 
+                // onClick={submit} 
+                onClick={handleChange} 
+                variant="primary" type="submit">
                     Submit
                 </Button>
             </Row>
