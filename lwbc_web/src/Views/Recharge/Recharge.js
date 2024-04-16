@@ -78,8 +78,8 @@ const Recharge = () => {
                 </Col>
 
                 <Button 
-                // onClick={submit} 
-                onClick={handleChange} 
+                onClick={submit} 
+                // onClick={handleChange} 
                 variant="primary" type="submit">
                     Submit
                 </Button>

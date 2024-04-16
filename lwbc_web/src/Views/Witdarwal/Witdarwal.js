@@ -22,7 +22,7 @@ const Witdarwal = () => {
         };
         POST("witdawarl", formData, header).then((res) => {
             toast("Your Witdarwal Your Amount");
-            navigate("/home")
+            navigate("/profile")
         });
     };
 
@@ -52,8 +52,8 @@ const Witdarwal = () => {
                 </Col>
 
                 <Button 
-                // onClick={submit} 
-                onClick={handleChange}
+                onClick={submit} 
+                // onClick={handleChange}
                 variant="primary" type="submit">
                     Submit
                 </Button>

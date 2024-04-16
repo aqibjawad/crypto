@@ -23,7 +23,7 @@ Witdarwal.create = function (witdarwal_amount, result) {
             } else {
                 // If the query is successful, return the insertId via the result callback
                 result(null, res.insertId);
-            }
+            } 
         }
     );
 };

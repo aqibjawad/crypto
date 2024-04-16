@@ -46,7 +46,6 @@ Auth.create = function (auth, result) {
   });
 };
 
-
 /*
   Error 0 means no error
   Error 1 means no Account
@@ -142,9 +141,10 @@ Auth.statusApprove = function (id, result) {
   );
 };
 
-Auth.findAllStaff = function (result) {
+
+Auth.level2 = function (id, result) {
   dbConn.query(
-    `Select * from user where role='Readonly' OR role='Editonly'`,
+    `UPDATE user SET levels=2 WHERE id = ?`, [id],
     function (err, res) {
       if (err) {
         console.log("error: ", err);
@@ -156,6 +156,7 @@ Auth.findAllStaff = function (result) {
     }
   );
 };
+
 
 Auth.delete = function (id, result) {
   dbConn.query("DELETE from user  WHERE id = ?", [id], function (err, res) {
@@ -185,7 +186,7 @@ Auth.Count = function (result) {
 
 Auth.AllUsers = function (result) {
   dbConn.query(
-    `SELECT * FROM auth`,
+    `SELECT * FROM auth `, 
     function (err, res) {
       if (err) {
         console.log("error: ", err);

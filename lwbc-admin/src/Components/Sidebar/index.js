@@ -64,6 +64,24 @@ const SideBar = () => {
           </Link>
         </li>
 
+        <li className={`${active == 1 ? "active-list" : ""}`} onClick={() => setActive(1)}>
+          <Link to="/whatsapp" className="menu-item" >
+            <span className='d-flex'>
+              <AiFillDashboard style={{ color: 'white', fontSize: '20px' }} />
+              <p style={{ fontSize: '15px' }}> Whatsapp Number </p>
+            </span>
+          </Link>
+        </li>
+
+        <li className={`${active == 1 ? "active-list" : ""}`} onClick={() => setActive(1)}>
+          <Link to="/wallet" className="menu-item" >
+            <span className='d-flex'>
+              <AiFillDashboard style={{ color: 'white', fontSize: '20px' }} />
+              <p style={{ fontSize: '15px' }}> Wallet Address </p>
+            </span>
+          </Link>
+        </li>
+
       </ul>
     </div>
   );

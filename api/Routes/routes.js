@@ -10,6 +10,11 @@ const announcementRoutes = require ("../Modules/Announcement/Announcement.Route"
 
 const witdarwalRoutes = require ("../Modules/Witdarwal/Witdarwal.Route");
 
+const wwhatsappRoutes = require ("../Modules/Whatsapp/Whatsapp.Route");
+
+const walladdressRoutes = require ("../Modules/Wallet/Wallet.Route");
+
+
 module.exports = function router(app) {
     app
       // Auth routes
@@ -24,5 +29,9 @@ module.exports = function router(app) {
       .use("/api/v1/announcements", announcementRoutes)
 
       .use("/api/v1/witdawarl", witdarwalRoutes)
+
+      .use("/api/v1/whatsapp", wwhatsappRoutes)
+
+      .use("/api/v1/walletaddress", walladdressRoutes)
   
   };

@@ -8,6 +8,8 @@ router.get('/', witdarwalController.findAll);
 // Create a new brand
 router.post('/', witdarwalController.create);
 
-router.get('/:id', witdarwalController.findById);
+router.get('/:id', witdarwalController.findByWallet);
+
+router.get('/:id', witdarwalController.findByWitdarwal);
 
 module.exports = router

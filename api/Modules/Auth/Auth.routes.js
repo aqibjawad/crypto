@@ -26,6 +26,8 @@ router
 
   .put("/status/approve/:id", authController.statusApprove)
 
+  .put("/status/level2/:id", authController.level2)
+
   .delete('/delete/:id', authController.delete);
 
 

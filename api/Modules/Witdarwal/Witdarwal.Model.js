@@ -27,8 +27,20 @@ Witdarwal.create = function (witdarwalamount, result) {
     );
 };
 
-Witdarwal.findById = function (id, result) {
+Witdarwal.findByWallet = function (id, result) {
   dbConn.query("Select * from addwallet where authId = ?", id, function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    }
+    else {
+      result(null, res);
+    }
+  });
+};
+
+Witdarwal.findByWitdarwal = function (id, result) {
+  dbConn.query("Select * from witdarwal where authId = ?", id, function (err, res) {
     if (err) {
       console.log("error: ", err);
       result(err, null);

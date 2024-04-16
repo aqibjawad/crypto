@@ -6,8 +6,15 @@ var jwt = require("jsonwebtoken");
 var secret = require("../../Config/secret.config");
 var jwtSecret = secret.jwt;
 
-exports.findById = function (req, res) {
-  Withdarwal.findById(req.params.id, function (err, Withdarwal) {
+exports.findByWallet = function (req, res) {
+  Withdarwal.findByWallet(req.params.id, function (err, Withdarwal) {
+    if (err) res.send(err);
+    res.json(Withdarwal);
+  });
+};
+
+exports.findByWitdarwal = function (req, res) {
+  Withdarwal.findByWitdarwal(req.params.id, function (err, Withdarwal) {
     if (err) res.send(err);
     res.json(Withdarwal);
   });

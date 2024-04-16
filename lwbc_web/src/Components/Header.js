@@ -27,7 +27,7 @@ const Header = () => {
 
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#7209B7', height: '130px' }}>
+        <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: 'grey', height: '130px' }}>
             <div className="container">
                 <div className="d-flex justify-content-between w-100">
                     <div>

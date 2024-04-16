@@ -7,7 +7,11 @@ import Users from "../Views/Users/Users"
 
 import About from "../Views/About/about"
 
-import Notification from "../Views/Announcements"
+import Notification from "../Views/Announcements" 
+
+import WhatsApp from "../Views/Whastapp"
+
+import Wallet from "../Views/Wallet"
 
 const routes =[  
     
@@ -17,6 +21,10 @@ const routes =[
     {path:'/aboutus', element:<About />, exact:'true', type:'private' },
 
     {path:'/noti', element:<Notification />, exact:'true', type:'private' },
+
+    {path:'/whatsapp', element:<WhatsApp />, exact:'true', type:'private' },
+
+    {path:'/wallet', element:<Wallet />, exact:'true', type:'private' },
 
 
     {path:'/sign-up', element:<Signup />, exact:'true', type:'public' },

@@ -123,6 +123,13 @@ exports.statusApprove = function (req, res) {
   });
 };
 
+exports.level2 = function (req, res) {
+  Auth.level2(req.params.id, function (err, auth) {
+    if (err) res.send(err);
+    res.json({ error: false, message: "Level Change" });
+  });
+};
+
 exports.update = function (req, res) {
   const token = req.headers["x-access-token"];
   jwt.verify(token, jwtSecret, function (err, decoded) {

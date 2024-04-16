@@ -6,7 +6,8 @@ import "./index.css"
 
 import { GET } from "../../apicontroller/ApiController"
 
-import ProfileWitdarwal from './Witdarwal.profile';
+import ProfileWitdarwal from './WallAddress.profile';
+import PWitdarwal from './Witdarwal.profile';
 
 const Account = () => {
 
@@ -44,7 +45,9 @@ const Account = () => {
                             </strong>
                         </div>
                     </div>
-                </div>
+                </div> <hr />
+
+                <ProfileWitdarwal />
 
                 <div>
                     <h1 className='text-center mt-5'>
@@ -75,12 +78,20 @@ const Account = () => {
                     </Table>
                 </div>
 
-                <div>
+                {/* <div>
                     <h1 className='text-center mt-5'>
-                        Your Witdarwals:
+                        Your Wallet Address:
                     </h1>
 
                     <ProfileWitdarwal />
+                </div> */}
+
+                <div>
+                    <h1 className='text-center mt-5'>
+                        Your Witdarwal:
+                    </h1>
+
+                    <PWitdarwal />
                 </div>
             </div>
         </Container>

@@ -6,7 +6,7 @@ import { Row, Col, Table, Breadcrumb, Modal, Button } from "react-bootstrap";
 
 import { AiFillDelete, AiOutlineCheckCircle } from 'react-icons/ai';
 
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes, FaLevelUpAlt } from 'react-icons/fa';
 
 import { toast } from "react-toastify";
 
@@ -64,6 +64,13 @@ const Users = () => {
         })
     };
 
+    const level2 = async (event, id) => {
+        await PUT("auth/status/level2", id, "").then((result) => {
+            toast("User Level change! ")
+            fetchData();
+        })
+    };
+
     const columns = useMemo(
         () => [
 
@@ -79,11 +86,6 @@ const Users = () => {
             },
 
             {
-                Header: "Phone",
-                accessor: "phone", // Replace with the actual key for your data
-            },
-
-            {
                 Header: "Status",
                 accessor: "status", // Replace with the actual key for your data
             },
@@ -94,13 +96,19 @@ const Users = () => {
             },
 
             {
+                Header: "Levels",
+                accessor: "levels", // Replace with the actual key for your data
+            },
+
+            {
                 Header: 'Actions', accessor: 'id',
                 Cell: ({ row }) => (
                     <div>
                         {/* <AiFillDelete onClick={(e) => remove(e, user.id)} />  */}
-                        <AiFillDelete onClick={(e) => delView(e, row.original.id)} />
-                        <FaTimes className="ml-4" onClick={(e) => activate(e, row.original.id)} />
+                        {/* <AiFillDelete onClick={(e) => delView(e, row.original.id)} /> */}
+                        <FaTimes onClick={(e) => activate(e, row.original.id)} />
                         <AiOutlineCheckCircle className="ml-4" onClick={(e) => suspend(e, row.original.id)} />
+                        <FaLevelUpAlt className="ml-4" onClick={(e) => level2(e, row.original.id)} />
                     </div>
                 )
             }

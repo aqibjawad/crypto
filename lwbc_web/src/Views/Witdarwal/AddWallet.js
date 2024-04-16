@@ -42,7 +42,7 @@ const AddWallet = () => {
             // Save the submission status in local storage
             localStorage.setItem(`submittedData_${user.authId}`, true);
 
-            // navigate("/home")
+            navigate("/profile")
         });
     };
 
@@ -73,13 +73,11 @@ const AddWallet = () => {
                     </Form.Group>
                 </Col>
 
-                {!dataSubmitted && (
                     <Button
                         onClick={submit}
                         variant="primary" type="submit">
                         Submit
                     </Button>
-                )}
             </Row>
         </Container>
     );

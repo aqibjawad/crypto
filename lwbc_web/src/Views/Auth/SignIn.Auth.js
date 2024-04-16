@@ -120,8 +120,8 @@ const Signin = () => {
 
               <Button
                 type="submit"
-                // onClick={submit}
-                onClick={handleChange}
+                onClick={submit}
+                // onClick={handleChange}
                 className="border-0 w-100"
                 style={{ fontFamily: "serif", fontWeight: "normal", background: "rgba(7,48,111,1)", borderColor: "rgba(7,48,111,1)" }}
               >

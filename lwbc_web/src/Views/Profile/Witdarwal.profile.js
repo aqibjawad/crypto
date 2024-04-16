@@ -4,16 +4,16 @@ import { GET } from "../../apicontroller/ApiController"
 
 import Table from 'react-bootstrap/Table';
 
-const ProfileWitdarwal = () => {
+const PWitdarwal = () => {
 
     const user = JSON.parse(localStorage.getItem("user"))
 
-    const [witdarwal, setWitdarwal] = useState({});
+    const [witdarwal, setWitdarwal] = useState([]);
 
 
     const fetchData = async () => {
-        GET(`addwallet/${user.authId}`).then((result) => {
-            setWitdarwal(result[0])
+        GET(`witdawarl/${user.authId}`).then((result) => {
+            setWitdarwal(result)
         })
     };
 
@@ -27,7 +27,6 @@ const ProfileWitdarwal = () => {
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th> Date </th>
                         <th> Witdarwal Amount </th>
                     </tr>
                 </thead>
@@ -35,8 +34,7 @@ const ProfileWitdarwal = () => {
                 <tbody>
                     <tr>
                         <td> {witdarwal.id} </td>
-                        <td> {witdarwal.agreement} </td>
-                        <td> {witdarwal.wallet_address} </td>
+                        <td> {witdarwal.witdarwal_amount} </td>
                     </tr>
                 </tbody>
             </Table>
@@ -44,4 +42,4 @@ const ProfileWitdarwal = () => {
     )
 }
 
-export default ProfileWitdarwal
+export default PWitdarwal
